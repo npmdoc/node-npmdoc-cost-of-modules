@@ -1,0 +1,381 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/siddharthkp/cost-of-modules#readme"
+
+    >cost-of-modules (v1.0.1)</a>
+</h1>
+<h4>Find out which of your dependencies are slowing you down 🐢</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cost-of-modules">module cost-of-modules</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">cost-of-modules.</span>helpers</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cost-of-modules.helpers">module cost-of-modules.helpers</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cost-of-modules.helpers.attachNestedDependencies">
+            function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>attachNestedDependencies
+            <span class="apidocSignatureSpan">(rootDependencies)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cost-of-modules.helpers.displayResults">
+            function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>displayResults
+            <span class="apidocSignatureSpan">(flatDependencies, allDependencies, totalSize)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cost-of-modules.helpers.getAllDependencies">
+            function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>getAllDependencies
+            <span class="apidocSignatureSpan">(flatDependencies)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cost-of-modules.helpers.getRootDependencies">
+            function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>getRootDependencies
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cost-of-modules.helpers.getSizeForNodeModules">
+            function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>getSizeForNodeModules
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cost-of-modules.helpers.setup">
+            function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>setup
+            <span class="apidocSignatureSpan">(includeDev)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cost-of-modules.helpers.teardown">
+            function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>teardown
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cost-of-modules" id="apidoc.module.cost-of-modules">module cost-of-modules</a></h1>
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cost-of-modules.helpers" id="apidoc.module.cost-of-modules.helpers">module cost-of-modules.helpers</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cost-of-modules.helpers.attachNestedDependencies" id="apidoc.element.cost-of-modules.helpers.attachNestedDependencies">
+        function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>attachNestedDependencies
+        <span class="apidocSignatureSpan">(rootDependencies)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function attachNestedDependencies(rootDependencies) {
+    var flatDependencies = [];
+    var dependencyTree = getDependencyTree();
+    for (var i = 0; i &#x3c; rootDependencies.length; i++) {
+        var dep = rootDependencies[i];
+
+        flatDependencies.push({
+            name: dep,
+<span class="apidocCodeCommentSpan">            /* Get flat child dependencies array */
+</span>            children: getDependenciesRecursively([], dependencyTree[dep])
+        });
+    }
+    return flatDependencies.sort();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cost-of-modules.helpers.displayResults" id="apidoc.element.cost-of-modules.helpers.displayResults">
+        function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>displayResults
+        <span class="apidocSignatureSpan">(flatDependencies, allDependencies, totalSize)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function displayResults(flatDependencies, allDependencies, totalSize) {
+<span class="apidocCodeCommentSpan">    /* Sort by size */
+</span>    var sortedDependencies = flatDependencies.sort(function (a, b) {
+        return b.actualSize - a.actualSize;
+    });
+
+    var table = new Table({ head: [&#x27;name&#x27;, &#x27;children&#x27;, &#x27;size&#x27;] });
+
+    for (var i = 0; i &#x3c; sortedDependencies.length; i++) {
+        var dep = sortedDependencies[i];
+
+        /* Showing only top 10 results in less mode */
+        if (argv.less &#x26;&#x26; i === 10) {
+            table.push([&#x27;+ &#x27; + (sortedDependencies.length - 10) + &#x27; modules&#x27;, null, null]);
+            break;
+        }
+
+        table.push([dep.name, dep.numberOfChildren, (dep.actualSize / 1024).toFixed(2) + &#x27;M&#x27; // Converting to M
+        ]);
+    }
+
+    /* Total */
+    table.push([yellow(sortedDependencies.length + &#x27; modules&#x27;), yellow(allDependencies.length - sortedDependencies.length + &#x27; children
+&#x27;), yellow((totalSize / 1024).toFixed(2) + &#x27;M&#x27;)]); // Converting to M
+
+    /* Print the table with some padding */
+    console.log();
+    console.log(table.toString());
+    console.log();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cost-of-modules.helpers.getAllDependencies" id="apidoc.element.cost-of-modules.helpers.getAllDependencies">
+        function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>getAllDependencies
+        <span class="apidocSignatureSpan">(flatDependencies)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getAllDependencies(flatDependencies) {
+    var allDependencies = [];
+    for (var i = 0; i &#x3c; flatDependencies.length; i++) {
+        var dep = flatDependencies[i];
+
+        allDependencies.push(dep.name); // Root dependency
+        allDependencies = allDependencies.concat(dep.children); // Children
+    }
+<span class="apidocCodeCommentSpan">    /* Deduplicate */
+</span>    allDependencies = allDependencies.filter(function (dep, index) {
+        return allDependencies.indexOf(dep) === index;
+    });
+    return allDependencies.sort();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cost-of-modules.helpers.getRootDependencies" id="apidoc.element.cost-of-modules.helpers.getRootDependencies">
+        function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>getRootDependencies
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getRootDependencies() {
+    var dependencyTree = getDependencyTree();
+    if (!dependencyTree) {
+        console.log(&#x27;There are no dependencies!&#x27;);
+        console.log();
+        process.exit(1);
+    }
+    return Object.keys(dependencyTree).sort();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cost-of-modules.helpers.getSizeForNodeModules" id="apidoc.element.cost-of-modules.helpers.getSizeForNodeModules">
+        function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>getSizeForNodeModules
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getSizeForNodeModules() {
+    var modules = {};
+    var allModules = fs.readdirSync(&#x27;node_modules&#x27;);
+    allModules.forEach(function (name) {
+        var itemStats = fs.lstatSync(path.join(&#x27;node_modules&#x27;, name));
+        if (itemStats.isDirectory()) {
+            if (name &#x26;&#x26; name[0] === &#x27;@&#x27;) {
+                var scopedModules = getScopedModules(name);
+                Object.assign(modules, scopedModules);
+            } else if (name) {
+                var size = dirSize(path.join(&#x27;node_modules&#x27;, name));
+                modules[name] = size;
+            }
+        }
+    });
+    return modules;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cost-of-modules.helpers.setup" id="apidoc.element.cost-of-modules.helpers.setup">
+        function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>setup
+        <span class="apidocSignatureSpan">(includeDev)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function setup(includeDev) {
+    console.log();
+
+    if (argv.includeDev || includeDev) productionModifier = &#x27;&#x27;;
+
+<span class="apidocCodeCommentSpan">    /*
+        Check if package.json exists
+        Need it to build dependency tree
+    */
+</span>    var packageJSONExists = fs.existsSync(&#x27;package.json&#x27;);
+    if (!packageJSONExists) {
+        console.log(&#x27;package.json not found!&#x27;);
+        console.log();
+        process.exit();
+    }
+
+    /* Do not install dependencies based --no-install flag */
+    if (argv.install != null &#x26;&#x26; !argv.install) return;
+
+    /*
+        Make sure dependencies are installed
+        Ignore devDependencies/bundledDependencies by default
+        Adds them with --include-dev
+    */
+    console.log(&#x27;Making sure dependencies are installed&#x27;);
+
+    var command = &#x27;npm install &#x27; + productionModifier;
+    if (argv.yarn) command = command.replace(&#x27;npm&#x27;, &#x27;yarn&#x27;);
+
+    console.log(command);
+    console.log();
+
+    /* Check if node modules exist and then backup */
+    var nodeModulesExist = fs.existsSync(&#x27;node_modules&#x27;);
+    if (nodeModulesExist) fs.copySync(&#x27;node_modules&#x27;, &#x27;node_modules_bak&#x27;);
+
+    /* Run install command */
+    syncExec(command, { stdio: [0, 1, 2] });
+    console.log();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cost-of-modules.helpers.teardown" id="apidoc.element.cost-of-modules.helpers.teardown">
+        function <span class="apidocSignatureSpan">cost-of-modules.helpers.</span>teardown
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function teardown() {
+<span class="apidocCodeCommentSpan">    /*
+      If the command is running with no-install,
+      there is no need for teardown
+    */
+</span>    if (argv.install != null &#x26;&#x26; !argv.install) return;
+    /*
+      Restore node_modules backup if it exists
+    */
+    var backupExist = fs.existsSync(&#x27;node_modules_bak&#x27;);
+    if (backupExist) {
+        fs.removeSync(&#x27;node_modules&#x27;);
+        fs.moveSync(&#x27;node_modules_bak&#x27;, &#x27;node_modules&#x27;);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
