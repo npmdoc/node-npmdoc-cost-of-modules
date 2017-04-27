@@ -170,7 +170,22 @@
     }
     return flatDependencies.sort();
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+/*
+Attach the nested dependendies in a flat manner
+[{
+    name: rootDependency,
+    children: [a, b, c, d]
+}]
+*/
+var flatDependencies = helpers.<span class="apidocCodeKeywordSpan">attachNestedDependencies</span>(rootDependencies);
+
+/*
+Modules actual size = size of the module + size of it&#x27;s children
+*/
+for (var i = 0; i &#x3c; flatDependencies.length; i++) {
+var dep = flatDependencies[i];
+...</pre></li>
     </ul>
 
 
@@ -212,7 +227,19 @@
     console.log(table.toString());
     console.log();
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+/* Total size of node_modules */
+var totalSize = 0;
+allDependencies.forEach(function (dep) {
+    totalSize += moduleSizes[dep] || 0;
+});
+
+/* Display results */
+helpers.<span class="apidocCodeKeywordSpan">displayResults</span>(flatDependencies, allDependencies, totalSize);
+
+/* Return to original state */
+helpers.teardown();
+...</pre></li>
     </ul>
 
 
@@ -238,7 +265,22 @@
     });
     return allDependencies.sort();
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+/*
+    All dependencies =
+    Root dependencies +  all their children
+    Deduplicated
+*/
+var allDependencies = helpers.<span class="apidocCodeKeywordSpan">getAllDependencies</span>(flatDependencies);
+
+/* Total size of node_modules */
+var totalSize = 0;
+allDependencies.forEach(function (dep) {
+    totalSize += moduleSizes[dep] || 0;
+});
+...</pre></li>
     </ul>
 
 
@@ -259,7 +301,23 @@
     }
     return Object.keys(dependencyTree).sort();
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var moduleSizes = helpers.getSizeForNodeModules();
+
+/*
+Get root dependencies from tree
+These are the ones declared as dependendies in package.json
+[a, b, c, d]
+*/
+var rootDependencies = helpers.<span class="apidocCodeKeywordSpan">getRootDependencies</span>();
+
+/*
+Attach the nested dependendies in a flat manner
+[{
+    name: rootDependency,
+    children: [a, b, c, d]
+}]
+...</pre></li>
     </ul>
 
 
@@ -288,7 +346,23 @@
     });
     return modules;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    Get size for all node modules
+    {
+        // name: size in bytes,
+        a: 40,
+        b: 220
+    }
+*/
+var moduleSizes = helpers.<span class="apidocCodeKeywordSpan">getSizeForNodeModules</span>();
+
+/*
+    Get root dependencies from tree
+    These are the ones declared as dependendies in package.json
+    [a, b, c, d]
+*/
+var rootDependencies = helpers.getRootDependencies();
+...</pre></li>
     </ul>
 
 
@@ -340,7 +414,23 @@
     syncExec(command, { stdio: [0, 1, 2] });
     console.log();
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+#!/usr/bin/env node
+&#x27;use strict&#x27;;
+
+var helpers = require(&#x27;./helpers&#x27;);
+
+helpers.<span class="apidocCodeKeywordSpan">setup</span>();
+
+console.log(&#x27;Calculating...&#x27;);
+console.log();
+
+/*
+Get size for all node modules
+{
+...</pre></li>
     </ul>
 
 
@@ -367,7 +457,16 @@
         fs.moveSync(&#x27;node_modules_bak&#x27;, &#x27;node_modules&#x27;);
     }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    totalSize += moduleSizes[dep] || 0;
+});
+
+/* Display results */
+helpers.displayResults(flatDependencies, allDependencies, totalSize);
+
+/* Return to original state */
+helpers.<span class="apidocCodeKeywordSpan">teardown</span>();
+...</pre></li>
     </ul>
 
 
