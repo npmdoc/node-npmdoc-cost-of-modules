@@ -1,6 +1,6 @@
 # npmdoc-cost-of-modules
 
-#### api documentation for  [cost-of-modules (v1.0.1)](https://github.com/siddharthkp/cost-of-modules#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-cost-of-modules.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-cost-of-modules) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-cost-of-modules.svg)](https://travis-ci.org/npmdoc/node-npmdoc-cost-of-modules)
+#### basic api documentation for  [cost-of-modules (v1.0.1)](https://github.com/siddharthkp/cost-of-modules#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-cost-of-modules.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-cost-of-modules) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-cost-of-modules.svg)](https://travis-ci.org/npmdoc/node-npmdoc-cost-of-modules)
 
 #### Find out which of your dependencies are slowing you down 🐢
 
